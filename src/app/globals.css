@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #2b1d14;        /* teks utama (espresso) */
+  --cream: #f8f1e7;      /* latar halaman */
+  --surface: #fffbf5;    /* kartu */
+  --line: #e7dac8;       /* border halus */
+  --muted: #6b5a4c;      /* teks sekunder */
+  --primary: #a94a28;    /* terakota: tombol & aksen utama */
+  --primary-ink: #ffffff;
+  --secondary: #5e6b4a;  /* hijau daun */
+  --accent: #c9963b;     /* emas: dekorasi saja, bukan teks */
+  --espresso: #3a2318;   /* panel gelap (kartu menu, band CTA) */
+  --latte: #ecdcc6;      /* panel hangat / bentuk dekoratif */
+  --caramel: #c98a55;    /* bentuk dekoratif, bukan teks di atas krem */
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-espresso: var(--espresso);
+  --color-latte: var(--latte);
+  --color-caramel: var(--caramel);
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-hand: var(--font-caveat), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
