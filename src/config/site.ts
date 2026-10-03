@@ -4,6 +4,7 @@ export const siteConfig = {
   // Zona waktu usaha, untuk menentukan jam buka "hari ini" (Bali = WITA).
   timeZone: "Asia/Makassar",
   isDemo: true,
+  orderMode: "cart" as "cart" | "none",
 
   // Seberapa sering halaman statis disegarkan (detik).
   revalidateSeconds: 3600,

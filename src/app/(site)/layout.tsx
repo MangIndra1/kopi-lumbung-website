@@ -1,4 +1,5 @@
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { CartSheet } from "@/components/cart-sheet";
+import { FloatingAction } from "@/components/floating-action";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getBusinessInfo } from "@/lib/data";
@@ -28,7 +29,8 @@ export default async function SiteLayout({
         {children}
       </main>
       <SiteFooter info={info} waHref={waHref} />
-      <FloatingWhatsApp href={waHref} />
+      <FloatingAction waHref={waHref} />
+      <CartSheet businessName={info.name} whatsappNumber={info.whatsapp_number} />
     </>
   );
 }

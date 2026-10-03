@@ -115,3 +115,36 @@ export function WhatsAppIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function BagIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M5 8h14l-1 12H6L5 8Z" />
+      <path d="M9 8V7a3 3 0 0 1 6 0v1" />
+    </Base>
+  );
+}
+
+export function PlusIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M12 5v14M5 12h14" />
+    </Base>
+  );
+}
+
+export function MinusIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M5 12h14" />
+    </Base>
+  );
+}
+
+export function CloseIcon(props: IconProps) {
+  return (
+    <Base {...props}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </Base>
+  );
+}

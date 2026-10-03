@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MenuBrowser } from "@/components/menu-browser";
 import { SectionHeading } from "@/components/section-heading";
-import { getBusinessInfo, getProducts, groupProductsByCategory } from "@/lib/data";
+import { getProducts, groupProductsByCategory } from "@/lib/data";
 
 export const revalidate = 3600;
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MenuPage() {
-  const [info, products] = await Promise.all([getBusinessInfo(), getProducts()]);
+  const products = await getProducts();
   const groups = groupProductsByCategory(products);
 
   return (
@@ -29,11 +29,7 @@ export default async function MenuPage() {
           Menu belum tersedia. Silakan cek lagi nanti.
         </p>
       ) : (
-        <MenuBrowser
-          groups={groups}
-          businessName={info.name}
-          whatsappNumber={info.whatsapp_number}
-        />
+        <MenuBrowser groups={groups} />
       )}
     </section>
   );

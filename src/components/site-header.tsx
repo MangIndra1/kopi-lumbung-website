@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CupIcon, WhatsAppIcon } from "@/components/icons";
+import { CupIcon } from "@/components/icons";
+import { HeaderOrderButton } from "@/components/header-order-button";
 import { DesktopNav, MobileNav } from "@/components/site-nav";
 
 type Props = {
@@ -27,15 +28,7 @@ export function SiteHeader({ name, tagline, waHref }: Props) {
         <DesktopNav />
 
         <div className="flex items-center gap-2">
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-ink transition hover:brightness-110 md:inline-flex"
-          >
-            <WhatsAppIcon className="size-4" />
-            <span>Pesan</span>
-          </a>
+          <HeaderOrderButton waHref={waHref} />
           <MobileNav />
         </div>
       </div>

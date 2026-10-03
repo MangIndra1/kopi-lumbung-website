@@ -4,7 +4,8 @@ import { siteConfig } from "@/config/site";
 import { getBusinessInfo, getFeaturedProducts, getTestimonials } from "@/lib/data";
 import { formatHours, formatRupiah, todayHours } from "@/lib/format";
 import { aboutImage, demoImages, heroImage, productImage } from "@/lib/placeholder";
-import { productOrderMessage, waLink } from "@/lib/wa";
+import { AddToCart } from "@/components/add-to-cart";
+import { waLink } from "@/lib/wa";
 import { SectionHeading } from "@/components/section-heading";
 import {
   ArrowRightIcon,
@@ -208,15 +209,7 @@ export default async function Home() {
                   )}
                   <div className="mt-5 flex items-center justify-between gap-3">
                     <span className="text-lg font-semibold">{formatRupiah(p.price)}</span>
-                    <a
-                      href={waLink(info.whatsapp_number, productOrderMessage(info.name, p.name))}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-cream px-4 py-2 text-sm font-medium text-espresso transition hover:bg-latte"
-                    >
-                      <WhatsAppIcon className="size-4" />
-                      Pesan
-                    </a>
+                    <AddToCart product={p} tone="light" />
                   </div>
                 </article>
               </li>

@@ -49,3 +49,12 @@ export function heroImage(info: BusinessInfo): string {
 export function aboutImage(info: BusinessInfo): string {
   return info.about_image_url ?? demoImages.about;
 }
+
+export const demoGallery: { image_url: string; alt_text: string }[] = [
+  { image_url: demoImages.about, alt_text: "Suasana kedai" },
+  { image_url: demoImages.aboutSecondary, alt_text: "Secangkir kopi di meja kayu" },
+  { image_url: demoImages.beans, alt_text: "Biji kopi sangrai" },
+  { image_url: demoImages.hero, alt_text: "Kopi susu dingin" },
+  { image_url: unsplash("photo-1442512595331-e89e73853f31"), alt_text: "Seduh manual V60" },
+  { image_url: unsplash("photo-1509042239860-f550ce710b93"), alt_text: "Cappuccino dengan latte art" },
+];

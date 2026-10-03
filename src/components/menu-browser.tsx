@@ -2,23 +2,20 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { WhatsAppIcon } from "@/components/icons";
+import { AddToCart } from "@/components/add-to-cart";
 import { formatRupiah } from "@/lib/format";
 import { productImage } from "@/lib/placeholder";
 import type { Product, ProductGroup } from "@/lib/types";
-import { productOrderMessage, waLink } from "@/lib/wa";
 
 const ALL = "Semua";
 
 type Props = {
   groups: ProductGroup[];
-  businessName: string;
-  whatsappNumber: string;
 };
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-export function MenuBrowser({ groups, businessName, whatsappNumber }: Props) {
+export function MenuBrowser({ groups }: Props) {
   const [active, setActive] = useState<string>(ALL);
   const categories = [ALL, ...groups.map((g) => g.category)];
   const visible = active === ALL ? groups : groups.filter((g) => g.category === active);
@@ -56,12 +53,7 @@ export function MenuBrowser({ groups, businessName, whatsappNumber }: Props) {
             </h2>
             <ul className="mt-6 grid gap-4 lg:grid-cols-2">
               {g.items.map((p) => (
-                <ProductRow
-                  key={p.id}
-                  product={p}
-                  businessName={businessName}
-                  whatsappNumber={whatsappNumber}
-                />
+                <ProductRow key={p.id} product={p} />
               ))}
             </ul>
           </section>
@@ -71,15 +63,7 @@ export function MenuBrowser({ groups, businessName, whatsappNumber }: Props) {
   );
 }
 
-function ProductRow({
-  product: p,
-  businessName,
-  whatsappNumber,
-}: {
-  product: Product;
-  businessName: string;
-  whatsappNumber: string;
-}) {
+function ProductRow({ product: p }: { product: Product }) {
   return (
     <li className="flex gap-4 rounded-[1.5rem] border border-line bg-surface p-3 sm:p-4">
       <div className="relative size-24 shrink-0 overflow-hidden rounded-2xl bg-latte sm:size-28">
@@ -104,16 +88,7 @@ function ProductRow({
 
         <div className="mt-auto pt-3">
           {p.is_available ? (
-            <a
-              href={waLink(whatsappNumber, productOrderMessage(businessName, p.name))}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Pesan ${p.name} via WhatsApp`}
-              className="inline-flex items-center gap-1.5 rounded-full bg-espresso px-4 py-2 text-sm font-medium text-cream transition hover:-translate-y-0.5"
-            >
-              <WhatsAppIcon className="size-4" />
-              Pesan
-            </a>
+            <AddToCart product={p} />
           ) : (
             <span className="inline-block rounded-full bg-latte px-3 py-1 text-xs font-medium text-muted">
               Habis
