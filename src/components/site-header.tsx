@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { CupIcon, MenuIcon, WhatsAppIcon } from "@/components/icons";
+import { CupIcon, WhatsAppIcon } from "@/components/icons";
+import { DesktopNav, MobileNav } from "@/components/site-nav";
 
 type Props = {
   name: string;
@@ -24,49 +24,19 @@ export function SiteHeader({ name, tagline, waHref }: Props) {
           </span>
         </Link>
 
-        <nav aria-label="Navigasi utama" className="hidden md:block">
-          <ul className="flex items-center gap-1 text-sm">
-            {siteConfig.nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="rounded-full px-4 py-2 text-muted transition-colors hover:bg-latte/60 hover:text-ink aria-[current=page]:bg-latte aria-[current=page]:font-medium aria-[current=page]:text-ink"
-                  aria-current={item.href === "/" ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <DesktopNav />
 
         <div className="flex items-center gap-2">
           <a
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-ink transition hover:brightness-110"
+            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-ink transition hover:brightness-110 md:inline-flex"
           >
             <WhatsAppIcon className="size-4" />
             <span>Pesan</span>
           </a>
-
-          {/* Menu mobile tanpa JavaScript */}
-          <details className="group relative md:hidden">
-            <summary className="grid size-10 cursor-pointer list-none place-items-center rounded-full border border-line text-ink [&::-webkit-details-marker]:hidden">
-              <MenuIcon className="size-5" />
-              <span className="sr-only">Buka menu</span>
-            </summary>
-            <ul className="absolute right-0 mt-3 w-48 rounded-2xl border border-line bg-surface p-2 text-sm shadow-xl">
-              {siteConfig.nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="block rounded-xl px-3 py-2.5 hover:bg-latte/60">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </details>
+          <MobileNav />
         </div>
       </div>
     </header>

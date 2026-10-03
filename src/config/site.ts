@@ -3,6 +3,7 @@ export const siteConfig = {
   locale: "id-ID",
   // Zona waktu usaha, untuk menentukan jam buka "hari ini" (Bali = WITA).
   timeZone: "Asia/Makassar",
+  isDemo: true,
 
   // Seberapa sering halaman statis disegarkan (detik).
   revalidateSeconds: 3600,

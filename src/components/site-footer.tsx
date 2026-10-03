@@ -73,9 +73,16 @@ export function SiteFooter({ info, waHref }: Props) {
         </div>
       </div>
 
-      <p className="border-t border-line px-4 py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} {info.name}. Semua hak dilindungi.
-      </p>
+      <div className="border-t border-line px-4 pt-5 pb-24 text-center text-xs text-muted sm:pb-5">
+        <p>
+          © {new Date().getFullYear()} {info.name}. Semua hak dilindungi.
+        </p>
+        {siteConfig.isDemo && (
+          <p className="mt-1">
+            Situs demo untuk portofolio. Bisnis, ulasan, dan data di sini fiktif.
+          </p>
+        )}
+      </div>
     </footer>
   );
 }
